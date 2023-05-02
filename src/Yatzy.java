@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.Arrays;
 
 public class Yatzy implements ActionListener {
     JFrame mainframe;
@@ -12,7 +13,7 @@ public class Yatzy implements ActionListener {
 
     int dicenummer;
 
-    ArrayList<JLabel> dicelist = new ArrayList<>();
+    int[] dicelist ={1, 2, 3, 4, 5, 6};
 
     int space;
 
@@ -29,20 +30,18 @@ public class Yatzy implements ActionListener {
             roll.setBounds(50, 300, 100, 50);
             roll.addActionListener(this);
             space = 10;
-
-
-
-
-
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == roll){
-                dicenummer = ((int) (Math.random() * 6 + 1));
-                System.out.println(dicenummer);
+
                 mainframe.add(new Dice()).setBounds(space,10,120,120);
                 space += 130;
+
+                for (int i = 0; i < dicelist.length; i++){
+                    System.out.println(dicelist[i]);
+                }
 
             }
 
