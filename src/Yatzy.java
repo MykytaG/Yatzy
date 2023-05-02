@@ -41,6 +41,7 @@ public class Yatzy implements ActionListener {
 
                 for (int i = 0; i < dicelist.length; i++){
                     System.out.println(dicelist[i]);
+
                 }
 
             }

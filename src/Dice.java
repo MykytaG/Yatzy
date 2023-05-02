@@ -9,7 +9,6 @@ public class Dice extends JPanel {
     }
 
     public Dice() {
-
     }
 
     public void paintComponent(Graphics dice) {
