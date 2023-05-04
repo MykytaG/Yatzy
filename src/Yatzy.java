@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Arrays;
+import java.util.Random;
 
 public class Yatzy implements ActionListener {
+    Random rdm = new Random();
     JFrame mainframe;
     JButton roll;
 
-    int dicenummer;
-
-    int[] dicelist ={1, 2, 3, 4, 5, 6};
+    int[] dicelist = new int[6];
 
     int space;
 
@@ -23,37 +23,36 @@ public class Yatzy implements ActionListener {
             mainframe.setVisible(true);
             mainframe.setLayout(null);
             mainframe.setResizable(false);
-            mainframe.setSize(700, 500);
+            mainframe.setSize(675, 500);
 
             roll = new JButton("Roll");
             mainframe.add(roll);
             roll.setBounds(50, 300, 100, 50);
             roll.addActionListener(this);
             space = 10;
+
+            for (int i = 0; i < 5; i++){
+                mainframe.add(new Dice(rdm.nextInt(1,7))).setBounds(space,10,120,120);
+                space += 130;
+            }
+            space = -120;
         }
 
-        @Override
         public void actionPerformed(ActionEvent e) {
+
             if (e.getSource() == roll){
 
-                mainframe.add(new Dice()).setBounds(space,10,120,120);
-                space += 130;
-
-                for (int i = 0; i < dicelist.length; i++){
-                    System.out.println(dicelist[i]);
-
+                for (int i = 0; i < 6; i++){
+                    mainframe.add(new Dice(rdm.nextInt(1,7))).setBounds(space,10,120,120);
+                    space += 130;
                 }
-
+                space = -120;
             }
-
         }
-
-
 
         public static void main(String[] args) {
 
             new Yatzy();
-
 
         }
     }
